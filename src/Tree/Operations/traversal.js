@@ -1,7 +1,5 @@
 const inOrder = function inOrder(cb, accumulator) {
-
   return function inOrderRecursive(node) {
-
     if (node.value === null) {
       return null;
     }
@@ -21,9 +19,7 @@ const inOrder = function inOrder(cb, accumulator) {
 }
 
 const postOrder = function postOrder(cb, accumulator) {
-
   return function postOrderRecursive(node) {
-
     if (node.value === null) {
       return null;
     }
@@ -43,9 +39,7 @@ const postOrder = function postOrder(cb, accumulator) {
 }
 
 const preOrder = function preOrder(cb, accumulator) {
-
   return function preOrderRecursive(node) {
-
     if (node.value === null) {
       return null;
     }
@@ -70,10 +64,13 @@ const levelOrder = function levelOrder(cb, accumulator) {
     queue.push(root);
     while (queue.length > 0) {
       const node = queue.shift();
+
       accumulator = cb(accumulator, node.value);
+
       if (node.left.value) {
         queue.push(node.left);
       }
+
       if (node.right.value) {
         queue.push(node.right);
       }
@@ -81,7 +78,6 @@ const levelOrder = function levelOrder(cb, accumulator) {
     return accumulator;
   }
 }
-
 
 export {
   preOrder,

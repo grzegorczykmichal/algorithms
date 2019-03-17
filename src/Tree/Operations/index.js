@@ -11,3 +11,8 @@ export {
   levelOrder
 }
 from './traversal';
+
+export {
+  toArray,
+}
+from './toArray';
