@@ -14,7 +14,7 @@ root = tree.add(root, 20);
 root = tree.add(root, 5);
 root = tree.add(root, 300);
 root = tree.add(root, 400);
-
 root = tree.add(root, 500);
+root = tree.add(root, 450);
 
 console.log(toArray()(root));
