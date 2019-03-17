@@ -11,6 +11,14 @@ class Node {
   get height() {
     return 1 + Math.max(this.left.height, this.right.height);
   }
+
+  isBalanced() {
+    return Math.abs(this.getBalanceFactor()) <= 1;
+  }
+
+  getBalanceFactor() {
+    return this.left.height - this.right.height;
+  }
 }
 
 export {

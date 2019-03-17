@@ -1,17 +1,28 @@
 import {
+  Node,
   NullNode
 } from "./../Node"
 
-class AVLTree {
+import {
+  rotateLeft,
+  rotateRight,
+} from "./../Operations"
+
+class AVL {
+
+  constructor() {
+
+  }
 
   add(node = new NullNode(), value) {
     if (node.value === null) {
-      return new TreeNode(value);
+      return new Node(value);
     }
 
     if (node.value === value) {
       return node;
     }
+
     if (value < node.value) {
       node.left = this.add(node.left, value);
     } else if (value > node.value) {
@@ -22,33 +33,30 @@ class AVLTree {
 
     if (balanceFactor > 1) {
       if (value > node.left.value) {
-        node.left = AVLTree.RotateLeft(node.left);
+        node.left = AVL.RotateLeft(node.left);
       }
-      return AVLTree.RotateRight(node);
+      return AVL.RotateRight(node);
     }
 
     if (balanceFactor < -1) {
       if (value < node.right.value) {
-        node.right = AVLTree.RotateRight(node.right);
+        node.right = AVL.RotateRight(node.right);
       }
-      return AVLTree.RotateLeft(node);
+      return AVL.RotateLeft(node);
     }
 
     return node;
   }
 
-  static RotateLeft(root = new NullNode()) {
-    const x = new TreeNode(root.value, root.left, root.right.left);
-    return new TreeNode(root.right.value, x, root.right.right);
+  static RotateLeft(node = new NullNode()) {
+    return rotateLeft(node);
   }
 
-  static RotateRight(root = new NullNode()) {
-    const y = new TreeNode(root.value, root.left.right, root.right);
-    return new TreeNode(root.left.value, root.left.left, y);
+  static RotateRight(node = new NullNode()) {
+    return rotateRight(node);
   }
-
 }
 
 export {
-  AVLTree
+  AVL
 };
